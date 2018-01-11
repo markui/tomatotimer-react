@@ -26,7 +26,7 @@ function addSecond() {
 }
 
 // Reducer
-const TIME_DURATION = 25000;
+const TIME_DURATION = 1500;
 
 const initialState = {
   isPlaying: false,
@@ -55,7 +55,8 @@ function reducer(state = initialState, action) {
 function applyStartTimer(state) {
   return {
     ...state,
-    isPlaying: true
+    isPlaying: true,
+    elapsedTime: 0
   }
 }
 
@@ -73,13 +74,12 @@ function applyAddSecond(state) {
   if(state.elapsedTime < TIME_DURATION) {
     return {
       ...state,
-      elapsedTime: state.elapsedTime + 1000
+      elapsedTime: state.elapsedTime + 1
     };
   } else {
     return {
       ...state,
       isPlaying: false,
-      elapsedTime: 0
     }
   }
 }
